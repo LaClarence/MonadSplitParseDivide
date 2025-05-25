@@ -1,14 +1,17 @@
 # MonadSplitParseDivide
 
 ## Java
-Just a try after viewed YT video [No Nonsense Monad & Functor - Les fondements de la programmation fonctionnelle par César Tron-Lozai](https://www.youtube.com/watch?v=e6tWJD5q8uw&t=3s&pp=ugMICgJmchABGAHKBRBObyBub3NlbnNlIE1vbmFk)
+
+Just a try after viewed [No Nonsense Monad & Functor - Les fondements de la programmation fonctionnelle par César Tron-Lozai](https://www.youtube.com/watch?v=e6tWJD5q8uw&t=3s&pp=ugMICgJmchABGAHKBRBObyBub3NlbnNlIE1vbmFk)
 
 
 ## Maven
 [Apache Maven Survival Guide “Bring It On! -Mode”](https://www.youtube.com/watch?v=90O2ghOtaBo&t=580s)
-[github/rfichtner/maven-survival-guide](https://github.com/rfichtner/maven-survival-guide/blob/JavaOne25/pizza-backend)
 
-### Commands
+[maven-survival-guide](https://github.com/rfichtner/maven-survival-guide/blob/JavaOne25/pizza-backend)
+
+### All maven commands
+
 ```
 mvn verify
 mvn help::effective-pom
@@ -22,12 +25,12 @@ mvn project-info-reports:dependencies
 mvn license:third-party-report
 ```
 
-## OWASP: dependency-check-maven
+### OWASP: dependency-check-maven
 
 see [dependency-check-maven](https://jeremylong.github.io/DependencyCheck/dependency-check-maven/index.html)
 Request API key to [NIST](https://nvd.nist.gov/developers/request-an-api-key)
 
-**Maven *settings.xml* **
+* Maven *settings.xml*
 
 ```
     <server>
@@ -35,9 +38,9 @@ Request API key to [NIST](https://nvd.nist.gov/developers/request-an-api-key)
       <username></username>
       <password>your_api-key</password>
     </server>
-````
+```
 
-**Maven *pom.xml* **
+* Maven *pom.xml*
 
 ```
       <plugin>
@@ -49,10 +52,14 @@ Request API key to [NIST](https://nvd.nist.gov/developers/request-an-api-key)
         </configuration>
       </plugin>
 ```
-##  Maven Build Time Profiler Summary
 
-Add extentins.xml into .mvn directory
+###  Maven Build Time Profiler Summary
 
-## Detecting Stale source detected
+Add [extentions.xml](https://github.com/khmarbaise/maven-buildtime-profiler/) into .mvn directory
 
-mvn verify -X and search
+### Detecting Stale source detected
+
+mvn verify -X 
+
+Search for "stale source detected" and could be removed
+
