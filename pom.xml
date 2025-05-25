@@ -8,8 +8,14 @@
   <name>MonadSplitParseDivide</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.release>21</maven.compiler.release>
+    <maven.compiler.release>24</maven.compiler.release>
   </properties>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -27,7 +33,6 @@
       <artifactId>junit-jupiter-api</artifactId>
       <scope>test</scope>
     </dependency>
-    <!-- Optionally: parameterized tests support -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-params</artifactId>
@@ -35,18 +40,20 @@
     </dependency>
   </dependencies>
   <build>
+    <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
     <pluginManagement>
-      <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
-        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.4.1</version>
         </plugin>
-        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.3.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-dependencies-plugin</artifactId>
+          <version>3.8.1</version>
         </plugin>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
@@ -62,5 +69,37 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>3.5.0</version>
+        <executions>
+          <execution>
+            <id>enforcer-versions</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <version>3.9.9</version>
+                </requireMavenVersion>
+                <requireJavaVersion>
+                  <version>24</version>
+                </requireJavaVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.owasp</groupId>
+        <artifactId>dependency-check-maven</artifactId>
+        <version>12.1.0</version>
+        <configuration>
+          <nvdApiServerId>owasp-nvd-api</nvdApiServerId>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
